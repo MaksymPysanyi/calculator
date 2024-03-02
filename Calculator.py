@@ -1,4 +1,5 @@
 import unittest
+
 class Calculator:
     def add(self, a, b):
         return a + b
@@ -60,3 +61,20 @@ if __name__ == "__main__":
 calculator = Calculator()
 result = calculator.subtract(-5, -3)
 print ('Sum:', result)
+
+
+class Calculator:
+    def power(self, a, b):
+        return a ** b
+
+class TestCalculator(unittest.TestCase):
+    def test_calculate_power(self):
+        calculator = Calculator()
+        self.assertEqual(calculator.power(5, 3), 125)
+
+if __name__ == "__main__":
+    unittest.main()
+    
+calculator = Calculator()
+result = calculator(5,3)
+print("Результат: ")
