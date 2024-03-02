@@ -67,14 +67,26 @@ class Calculator:
     def power(self, a, b):
         return a ** b
 
+    def gcd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
 class TestCalculator(unittest.TestCase):
     def test_calculate_power(self):
         calculator = Calculator()
         self.assertEqual(calculator.power(5, 3), 125)
 
+    def test_gcd(self):
+        calculator = Calculator()
+        self.assertEqual(calculator.gcd(12, 18), 6)
+        self.assertEqual(calculator.gcd(15, 25), 5)
+        self.assertEqual(calculator.gcd(21, 28), 7)
+
 if __name__ == "__main__":
     unittest.main()
-    
+
+
 calculator = Calculator()
 result = calculator(5,3)
 print("Результат: ")
