@@ -71,6 +71,9 @@ class Calculator:
         while b:
             a, b = b, a % b
         return a
+    
+    def lcm(self, a, b):
+        return a * b // self.gcd(a, b)
 
 class TestCalculator(unittest.TestCase):
     def test_calculate_power(self):
@@ -82,6 +85,12 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(calculator.gcd(12, 18), 6)
         self.assertEqual(calculator.gcd(15, 25), 5)
         self.assertEqual(calculator.gcd(21, 28), 7)
+
+    def test_lcm(self):
+        calculator = Calculator()
+        self.assertEqual(calculator.lcm(12, 18), 36)
+        self.assertEqual(calculator.lcm(15, 25), 75)
+        self.assertEqual(calculator.lcm(21, 28), 84)
 
 if __name__ == "__main__":
     unittest.main()
