@@ -14,6 +14,16 @@ class Calculator:
         if b == 0:
             raise ValueError("Ділення на нуль неможливе")
         return a / b
+    def power(self, a, b):
+        return a ** b
+
+    def gcd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a
+    
+    def lcm(self, a, b):
+        return a * b // self.gcd(a, b)
     
 
 class TestCalculator(unittest.TestCase):
@@ -54,28 +64,6 @@ class TestCalculator(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, 1.66667, "Результат ділення 5 на 3 має бути 1.66667")
-
-if __name__ == "__main__":
-    unittest.main()
-
-calculator = Calculator()
-result = calculator.subtract(-5, -3)
-print ('Sum:', result)
-
-
-class Calculator:
-    def power(self, a, b):
-        return a ** b
-
-    def gcd(self, a, b):
-        while b:
-            a, b = b, a % b
-        return a
-    
-    def lcm(self, a, b):
-        return a * b // self.gcd(a, b)
-
-class TestCalculator(unittest.TestCase):
     def test_calculate_power(self):
         calculator = Calculator()
         self.assertEqual(calculator.power(5, 3), 125)
@@ -95,7 +83,6 @@ class TestCalculator(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
-
 calculator = Calculator()
-result = calculator(5,3)
-print("Результат: ")
+result = calculator.subtract(-5, -3)
+print ('Sum:', result)
