@@ -10,6 +10,22 @@ class Calculator:
     def multiply(self, a, b):
         return a * b
     
+    def divide(self, a, b):
+        if b == 0:
+            raise ValueError("Ділення на нуль неможливе")
+        return a / b
+    
+    def power(self, a, b):
+        return a ** b
+
+    def gcd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a
+    
+    def lcm(self, a, b):
+        return a * b // self.gcd(a, b)
+    
 
 class TestCalculator(unittest.TestCase):
     def setUp(self):
@@ -40,33 +56,6 @@ class TestCalculator(unittest.TestCase):
         # Assert
         self.assertEqual(result, 15, "Добуток 5 і 3 має бути 15")
     
- 
-
-if __name__ == "__main__":
-    unittest.main()
-
-calculator = Calculator()
-result = calculator.subtract(-5, -3)
-print ('Sum:', result)
-
-
-class calculator:
-    def divide(self, a, b):
-        if b == 0:
-            raise ValueError("Ділення на нуль неможливе")
-        return a / b
-    def power(self, a, b):
-        return a ** b
-
-    def gcd(self, a, b):
-        while b:
-            a, b = b, a % b
-        return a
-    
-    def lcm(self, a, b):
-        return a * b // self.gcd(a, b)
-
-class TestCalculator(unittest.TestCase):
     def test_divide_positive_numbers(self):
         # Arrange
         a, b = 5, 3
@@ -91,3 +80,12 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(calculator.lcm(12, 18), 36)
         self.assertEqual(calculator.lcm(15, 25), 75)
         self.assertEqual(calculator.lcm(21, 28), 84)
+    
+ 
+
+if __name__ == "__main__":
+    unittest.main()
+
+calculator = Calculator()
+result = calculator.subtract(-5, -3)
+print ('Sum:', result)
